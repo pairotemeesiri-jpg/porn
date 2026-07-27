@@ -6,7 +6,8 @@
     <title>ถวายพระพรออนไลน์</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- เปลี่ยนเป็นฟอนต์ Chakra Petch มีหางชัดเจน ใช้ฟรีไม่ผิดลิขสิทธิ์ -->
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -21,7 +22,8 @@
                             text: '#46370d'
                         }
                     },
-                    fontFamily: { sarabun: ['Sarabun', 'sans-serif'] }
+                    /* ตั้งค่าฟอนต์หลักเป็น Chakra Petch */
+                    fontFamily: { sarabun: ['"Chakra Petch"', 'sans-serif'] }
                 }
             }
         }
@@ -38,7 +40,7 @@
             background-color: #d9b644;
             background-blend-mode: overlay;
             
-            font-family: 'Sarabun', sans-serif; 
+            font-family: '"Chakra Petch"', sans-serif; 
             color: #46370d; 
             height: 100vh;
             display: flex;
@@ -49,7 +51,7 @@
         }
         .page-container {
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -80,7 +82,9 @@
             object-fit: contain;
         }
         .top-text {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.6;
             margin-top: 0.75rem;
         }
         .form-area {
@@ -89,146 +93,38 @@
             position: relative;
             z-index: 10;
         }
-        input {
-            font-size: 1rem;
-            padding: 0.65rem;
+        #fullName {
+            font-size: 1.3rem !important;
+            font-weight: 500 !important;
+            padding: 0.9rem 1rem !important;
+            height: auto !important;
         }
         button {
-            font-size: 1.1rem;
-            padding: 0.65rem;
+            font-size: 1.25rem;
+            padding: 0.85rem;
         }
         #statusMsg {
             min-height: 1.5rem;
             padding-bottom: 0.25rem;
-        }
-
-        /* ===== ปุ่มลูกศร ===== */
-        .link-image-container {
-            margin-top: 0.75rem;
-            text-align: center;
-        }
-        .link-image {
-            width: 48px;
-            height: 48px;
-            background-color: #c29b25;
-            border-radius: 4px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-        }
-        .link-image:hover {
-            background-color: #a8821e;
-            transform: translateY(-2px);
-        }
-        .link-image i {
-            color: white;
-            font-size: 24px;
-        }
-
-        /* ===== ปรับแผงเลื่อนให้ใช้พื้นที่เต็มที่สุด ===== */
-        .slide-panel {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: white;
-            border-radius: 12px 12px 0 0;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
-            transform: translateY(100%);
-            transition: transform 0.3s ease-in-out;
-            z-index: 999;
-            max-height: 100vh; /* ✅ สูงสุดเต็มจอ */
-            overflow: hidden; /* ✅ ปิดการเลื่อนของแผง ใช้การเลื่อนจาก iframe แทน */
-        }
-        .slide-panel.active {
-            transform: translateY(0);
-        }
-        .panel-header {
-            display: flex;
-            justify-content: flex-end; /* ✅ ปุ่มปิดอยู่ขวาสุด ไม่ต้องมีหัวข้อ */
-            align-items: center;
-            padding: 0.5rem 1rem; /* ✅ ลดระยะห่างให้น้อยที่สุด */
-            border-bottom: 1px solid #e5e7eb;
-            position: sticky;
-            top: 0;
-            background-color: white;
-        }
-        .close-btn {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background-color: #f3f4f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            font-size: 14px;
-        }
-        .close-btn:hover {
-            background-color: #e5e7eb;
-        }
-        .panel-content {
-            padding: 0;
-            height: calc(100vh - 40px); /* ✅ คำนวณความสูงให้พอดี ลบเฉพาะส่วนปุ่มปิด */
-            line-height: 1;
-        }
-        .panel-content iframe {
-            width: 100%;
-            height: 100%; /* ✅ เต็มความสูงของพื้นที่ว่าง */
-            border: none;
-            display: block;
-        }
-        .panel-overlay {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0,0,0,0.3);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 998;
-        }
-        .panel-overlay.active {
-            opacity: 1;
-            visibility: visible;
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
     <div class="page-container">
         <div class="box image-section text-center">
-            <img src="https://github.com/pairotemeesiri-jpg/porn/blob/main/porn.jpg" alt="พระบรมฉายาลักษณ์" class="royal-img" loading="lazy">
-            <p class="top-text font-medium">น้อมเกล้าถวายพระพรชัยมงคล<br>สมเด็จพระเจ้าอยู่หัวมหาวชิราลงกรณ บดินทรเทพยวรางกูร<br>มหิศรภูมิพลราชวรางกูร กิติสิริสมบูรณอดุลยเดช สยามินทราธิเบศรราชวโรดม บรมนาถบพิตร พระวชิรเกล้าเจ้าอยู่หัว</p>
+            <img src="https://www.dol.go.th/chbr-banbung/media.php?id=920858144723308544&name=พระบรมฉายาลักษณ์พระราชทาน 2569.jpg" alt="พระบรมฉายาลักษณ์" class="royal-img" loading="lazy">
+            <p class="top-text font-medium">น้อมเกล้าถวายพระพรชัยมงคล<br>
+            สมเด็จพระเจ้าอยู่หัวมหาวชิราลงกรณ บดินทรเทพยวรางกูร<br>
+            มหิศรภูมิพลราชวรางกูร กิติสิริสมบูรณอดุลยเดช<br>สยามินทราธิเบศรราชวโรดม บรมนาถบพิตร<br>พระวชิรเกล้าเจ้าอยู่หัว</p>
         </div>
 
         <div class="box form-area">
-            <input type="text" id="fullName" placeholder="ชื่อ-นามสกุล" class="w-full px-4 py-2 border border-gold-main/60 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-main/50 mb-2 text-left bg-white/85">
+            <input type="text" id="fullName" placeholder="ชื่อ-นามสกุล" class="w-full border border-gold-main/60 rounded-md focus:outline-none focus:ring-2 focus:ring-gold-main/50 mb-2 text-left bg-white/85">
             <button id="submitBtn" class="w-full bg-gradient-to-r from-gold-main to-gold-dark hover:brightness-110 text-white font-semibold py-2 rounded-md shadow-md transition-all">
                 <i class="fa fa-check-circle mr-2"></i> ลงนามถวายพระพร
             </button>
             <div id="statusMsg" class="text-center mt-2 font-medium"></div>
-
-            <div class="link-image-container">
-                <div class="link-image" id="openPanelBtn">
-                    <i class="fa fa-chevron-down"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel-overlay" id="panelOverlay"></div>
-    <div class="slide-panel" id="slidePanel">
-        <div class="panel-header">
-            <div class="close-btn" id="closePanelBtn">
-                <i class="fa fa-times"></i>
-            </div>
-        </div>
-        <div class="panel-content">
-            <!-- ใส่ลิงก์ของคุณตรงนี้ -->
-            <iframe src="https://pairotemeesiri-jpg.github.io/Royal-3/Royal-1.html"></iframe>
         </div>
     </div>
 
@@ -267,11 +163,13 @@
 
                 if (result.success) {
                     document.getElementById("fullName").value = "";
+                    status.textContent = "✅ บันทึกข้อมูลเรียบร้อยแล้ว";
+                    status.style.color = "#166534";
                 } else {
                     status.textContent = "❌ " + (result.error || "ไม่สามารถบันทึกได้");
                     status.style.color = "#dc2626";
-                    setTimeout(() => status.textContent = "", 2500);
                 }
+                setTimeout(() => status.textContent = "", 2500);
 
             } catch (err) {
                 console.error(err);
@@ -290,26 +188,6 @@
         document.getElementById("fullName").addEventListener("keydown", e => {
             if (e.key === "Enter") { e.preventDefault(); submitForm(); }
         });
-
-        const openPanelBtn = document.getElementById("openPanelBtn");
-        const closePanelBtn = document.getElementById("closePanelBtn");
-        const slidePanel = document.getElementById("slidePanel");
-        const panelOverlay = document.getElementById("panelOverlay");
-
-        function openPanel() {
-            slidePanel.classList.add("active");
-            panelOverlay.classList.add("active");
-            document.body.style.overflow = "hidden";
-        }
-        function closePanel() {
-            slidePanel.classList.remove("active");
-            panelOverlay.classList.remove("active");
-            document.body.style.overflow = "";
-        }
-
-        openPanelBtn.addEventListener("click", openPanel);
-        closePanelBtn.addEventListener("click", closePanel);
-        panelOverlay.addEventListener("click", closePanel);
     </script>
 </body>
 </html>
